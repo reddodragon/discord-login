@@ -1,0 +1,35 @@
+<div class="col-md-3 p-d">
+  <div class="card card-body text-light" style="background-color: #121212">
+    
+    <p><%- guild.id %></p>
+
+    <% if (guild.icon === null) { %> <% } else if(guild.icon.substring(0,2) ===
+    'a_') { %>
+    <img
+      src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.gif"
+      alt=""
+    />
+    <% } else { %>
+    <img
+      src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png"
+      alt=""
+    />
+    <% } %> 
+    <h2 class="h6"><%- guild.name %></h2>
+
+    <% if(guild.owner){ %>
+    <span class="badge bg-success">Owner</span>
+    <% } %>
+
+    <button data-bs-toggle="collapse" data-bs-target="<%= '#collapse' + guild.id %>" class="btn btn-primary btn-sm">
+        Features
+    </button>
+    <div class="collapse" id="<%= 'collapse' + guild.id %>">
+        <ul >
+        <% guild.features.forEach(feature => { %>
+        <li><%= feature %></li>
+        <% }) %>
+        </ul>
+    </div>
+  </div>
+</div>
